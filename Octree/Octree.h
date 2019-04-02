@@ -11,8 +11,10 @@ public:
 	bool insertar(pointOctree);
 	bool buscar(pointOctree,nodeOctree*&);
 	nodeOctree *head;
-	void dibujar(nodeOctree*&);
+	void dibujar();
+	void _dibujar(nodeOctree *);
 	void subdivision(nodeOctree*&);
+	void print(nodeOctree *);
 
 
 	~Octree();

@@ -4,7 +4,7 @@
 
 pointOctree::pointOctree()
 {
-	coordX = coordY = 0;
+	coordX = coordY = coordZ = 0;
 }
 
 pointOctree::pointOctree(double _x, double _y,double _z)
@@ -14,6 +14,20 @@ pointOctree::pointOctree(double _x, double _y,double _z)
 	coordZ = _z;
 
 }
+
+void pointOctree::imprimirPoint()
+{
+	cout << "punto en x: " << coordX << endl;
+	cout << "punto en y: " << coordY << endl;
+	cout << "punto en z: " << coordZ << endl;
+}
+
+void pointOctree::imprimirCoord()
+{
+	cout << "coordenada x: " << coordX << endl;
+	cout << "coordenada y: " << coordY << endl;
+}
+
 
 pointOctree::pointOctree(double _x, double _y)
 {
