@@ -42,7 +42,7 @@ bool Octree::buscar(pointOctree nuevo, nodeOctree*& P)
 	zmedio = (P->profundidad.coordX + P->profundidad.coordY) / 2;
 
 
-	for (P = head; P->hoja != true; P->hijos[le_hijos])
+	for (P = head; P->hoja != true; P=P->hijos[le_hijos])
 	{
 		if (nuevo.coordX > xmedio)
 		{
@@ -184,7 +184,90 @@ void Octree::subdivision(nodeOctree*& P)
 
 }
 
-void Octree::dibujar(nodeOctree*& P)
+void Octree::dibujar()
 {
+	nodeOctree *p = head;
+	double mx, my, mz;
+	if (p->hoja)
+	{
+		for (int i = 0; i < p->num_puntos.size(); i++)
+		{
+			glPointSize(5.1);
+			glBegin(GL_POINTS);
+			glColor3f(0, 0, 255);
+			glVertex3d(p->num_puntos[i].coordX, p->num_puntos[i].coordY, p->num_puntos[i].coordZ);
+			glEnd();
+		}
+		return;
+	}
+
+	mx = (p->esquinaInferiorDerecha.coordX + p->esquinaSuperiorIzquierda.coordX) / 2;
+	my = (p->esquinaInferiorDerecha.coordY + p->esquinaSuperiorIzquierda.coordY) / 2;
+	mz = (p->profundidad.coordX + p->profundidad.coordY) / 2;
+
+	
+	glBegin(GL_LINES);
+	//lineas horizontales
+	
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordX);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordX);
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX,p->esquinaSuperiorIzquierda.coordY,p->profundidad.coordX);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordX);
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordY);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordY);
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordY);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordY);
+
+	
+	
+	//Lineas verticales
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX,p->esquinaSuperiorIzquierda.coordY,p->profundidad.coordX);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordX);
+	
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordX);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordX);
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordY);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordY);
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordY);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordY);
+
+	//lineas diagonales 
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordX);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordY);
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordX);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaSuperiorIzquierda.coordY, p->profundidad.coordY);
+	
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordX);
+	glVertex3d(p->esquinaSuperiorIzquierda.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordY);
+
+	glColor3d(255, 0, 0);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordX);
+	glVertex3d(p->esquinaInferiorDerecha.coordX, p->esquinaInferiorDerecha.coordY, p->profundidad.coordY);
+
+	glEnd();
+
+
+
+
+
 
 }
