@@ -1,0 +1,8 @@
+﻿  Octree.cpp
+c:\users\martin\source\repos\leoctree\leoctree\octree.cpp(68): warning C4018: '<': no coinciden signed/unsigned
+c:\users\martin\source\repos\leoctree\leoctree\octree.cpp(89): warning C4018: '>': no coinciden signed/unsigned
+c:\users\martin\source\repos\leoctree\leoctree\octree.cpp(117): warning C4018: '<': no coinciden signed/unsigned
+c:\users\martin\source\repos\leoctree\leoctree\octree.cpp(170): warning C4018: '>': no coinciden signed/unsigned
+c:\users\martin\source\repos\leoctree\leoctree\octree.cpp(184): warning C4018: '<': no coinciden signed/unsigned
+c:\users\martin\source\repos\leoctree\leoctree\octree.cpp(254): warning C4018: '<': no coinciden signed/unsigned
+  Leoctree.vcxproj -> C:\Users\MARTIN\source\repos\Leoctree\Debug\Leoctree.exe
